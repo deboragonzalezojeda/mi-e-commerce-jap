@@ -188,3 +188,22 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.titulo {
+  font-size: 2rem;
+  padding: 2vw 2vw 0 2vw;
+  text-align: center;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  padding: 0 2vw 2vw 2vw;
+  text-align: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: 0 auto;
+}
