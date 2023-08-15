@@ -27,7 +27,7 @@ nav a {
     font-size: 3.5rem;
   }
 }
-
+/*
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -40,7 +40,7 @@ nav a {
   color: black;
   font-weight: bold;
 }
-
+*/
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
@@ -206,4 +206,82 @@ a.custom-card:hover {
   max-width: 500px;
   padding: 15px;
   margin: 0 auto;
+}
+
+.cover-img1 {
+  width: 100%;
+  padding: 20px;
+}
+
+.cover-img2 {
+  width: 100%;
+}
+
+.cover-img3{
+  width: 30%;
+  margin-top: 7vw;
+  margin-bottom: 5vw;
+}
+
+.cover-container {
+  background-color: #f8f9fa;
+}
+
+.col1 {
+  display: flex;
+  align-items: center;
+}
+
+.col2 {
+  background-color: #fdf4e7;
+  border-radius: 25px;
+  margin: 25px;
+}
+
+.login-container {
+height: 75vh;
+}
+
+#boton-iniciar-sesion {
+  color: #fdf4e7;
+  background-color: #e6900e;
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
+  margin: 10px;
+  width: 250px;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.login-input {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 250px;
+  padding: 10px 10px 10px 40px;
+  margin: 10px;
+}
+
+.circulo {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #e6900e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-icon {
+  width: 50%;
 }
