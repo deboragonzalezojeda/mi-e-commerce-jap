@@ -1,3 +1,7 @@
+function showAlertWarning() {
+    document.getElementById('alert-warning').classList.add('show');
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
@@ -14,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     console.log(sessionStorage);
     if(!sessionStorage.datos) {
-        alert('Inicia sesion para continuar');
-        location.href = "login.html";
+        showAlertWarning();
+        setTimeout(() => {location.href = "login.html";}, 5000)
+        
     };
 });
