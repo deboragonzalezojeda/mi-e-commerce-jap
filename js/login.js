@@ -31,10 +31,10 @@ btn.addEventListener('click', function(e) {
 
     let expReg= /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 
-    if(expReg.test(email.value) && email.value && pw.value) {
+    if(expReg.test(email.value) && email.value && pw.value.length > 7) {
         showAlertSuccess();
         location.href = "index.html";    
-    } else if (email.value && pw.value) {
+    } else if (!expReg.test(email.value)) {
         showAlertEmailError();
     } else {
         showAlertError();
