@@ -16,10 +16,11 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
-    console.log(sessionStorage);
     if(!sessionStorage.datos) {
         showAlertWarning();
         setTimeout(() => {location.href = "login.html";}, 5000)
-        
-    };
+    } else {
+        document.getElementById('logged-account').innerHTML += `<a class="nav-link" href="my-profile.html">${JSON.parse(sessionStorage.datos).email}</a>`
+    }
 });
+
