@@ -1,13 +1,22 @@
 function showAlertSuccess() {
     document.getElementById("alert-success").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-success").classList.remove("show");
+    },2000);
 }
 
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-danger").classList.remove("show");
+    },2000);
 }
 
 function showAlertEmailError() {
     document.getElementById("alert-email-danger").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-email-danger").classList.remove("show");
+    },2000);
 }
 
 
@@ -33,7 +42,9 @@ btn.addEventListener('click', function(e) {
 
     if(expReg.test(email.value) && email.value && pw.value.length > 7) {
         showAlertSuccess();
-        location.href = "index.html";    
+        setTimeout(() => {
+            location.href = 'index.html';
+        }, 1000);
     } else if (!expReg.test(email.value)) {
         showAlertEmailError();
     } else {

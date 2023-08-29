@@ -282,6 +282,20 @@ height: 75vh;
   width: 50%;
 }
 
+#navbar {
+  background-color: #e6900e;
+  color: #fdf4e7;
+}
+
+.background-ligth-orange {
+  background-color: #fdf4e7;
+}
+
+.background-dark-orange {
+  background-color: #e6900e;
+  color: #fdf4e7;
+}
+
 /* Animacion de circulo de fondo */
 
 .circle1 {
