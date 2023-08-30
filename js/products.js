@@ -4,9 +4,6 @@ const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
 //Variable creada para contener el div 'list-container'
 const listContainer = document.getElementsByClassName('list-container');
 
-//Variables para los botones del filtro
-
-
 //Funcion que hace el fetch de la url
 async function getJsonData(url) {
     const response = await fetch(url);
@@ -37,3 +34,39 @@ function showData(dataArray) {
         `;
     }
 }
+
+//Funcion que ordena los datos, segun el tipo
+function sortData(dataArray, sortType) {
+    let newArray = [...dataArray];
+
+    if(sortType === 'desc') {
+        newArray.sort((a, b) => {
+            b.cost - a.cost;
+        });
+    } else if(sortType === 'asc') {
+        newArray.sort((a, b) => {
+            a.cost - b.cost;
+        });
+    } else {
+        newArray.sort((a, b) => {
+            newArray((a, b) => b.soldCount - a.soldCount);
+        });
+    }
+
+    showData(newArray);
+}
+
+
+//EventListeners
+
+document.getElementById('sort-price-desc').addEventListener('click', () => {
+    console.log('tocaste price desc');
+});
+
+document.getElementById('sort-price-asc').addEventListener('click', () => {
+    console.log('tocaste price asc');
+});
+
+document.getElementById('sort-rel').addEventListener('click', () => {
+    console.log('tocaste price rel');
+});
