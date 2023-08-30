@@ -4,6 +4,9 @@ const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
 //Variable creada para contener el div 'list-container'
 const listContainer = document.getElementsByClassName('list-container');
 
+//Variables para los botones del filtro
+
+
 //Funcion que hace el fetch de la url
 async function getJsonData(url) {
     const response = await fetch(url);
