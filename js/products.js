@@ -1,6 +1,7 @@
 //URL que contiene los datos
 const URL = 'https://japceibal.github.io/emercado-api/cats_products/' + localStorage.catID + '.json';
 let data = [];
+let newArray = [];
 
 //Variable creada para contener el div 'list-container'
 const listContainer = document.getElementsByClassName('list-container');
@@ -12,7 +13,7 @@ async function getJsonData(url) {
     showData(data.products);
 };
 
-getJsonData(URL)
+getJsonData(URL);
 
 //Funcion que muestra los datos
 function showData(dataArray) {
@@ -38,9 +39,10 @@ function showData(dataArray) {
     }
 }
 
+
 //Funcion que ordena los datos, segun el tipo
 function sortData(dataArray, sortType) {
-    let newArray = [...dataArray.products];
+    newArray = [...dataArray.products];
 
     if(sortType === 'desc') {
         newArray.sort((a, b) => b.cost - a.cost);
@@ -58,6 +60,31 @@ function sortData(dataArray, sortType) {
 }
 
 
+//Variables creadas para localizar los inputs
+let min = document.getElementById('price-range-min');
+let max = document.getElementById('price-range-max');
+
+//Funcion que filtra los datos, segun un rango de precio
+function priceRangeFilter(dataArray, min, max) {
+    newArray = [];
+
+    if(min.value == '' && max.value == '') {
+        alert('Ingrese un valor para filtrar');
+    } else if(min.value && max.value == '') {
+        newArray = dataArray.products.filter((item) => item.cost > min.value);
+    } else if(min.value == '' && max.value) {
+        newArray = dataArray.products.filter((item) => item.cost < max.value);
+    } else {
+        newArray = dataArray.products.filter((item) => item.cost > min.value && item.cost < max.value);
+    }
+
+    min.value = '';
+    max.value = '';
+
+    showData(newArray);
+}
+
+
 //EventListeners
 
 document.getElementById('sort-price-desc').addEventListener('click', () => {
@@ -71,3 +98,9 @@ document.getElementById('sort-price-asc').addEventListener('click', () => {
 document.getElementById('sort-rel').addEventListener('click', () => {
     showData(sortData(data, 'sort-rel'));
 });
+
+document.getElementById('range-filter-button').addEventListener('click', () => {
+    priceRangeFilter(data, min, max)
+});
+
+document.getElementById('clear-range-filter').addEventListener('click', () => {showData(data.productos)});
