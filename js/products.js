@@ -1,5 +1,6 @@
 //URL que contiene los datos
-const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+const URL = 'https://japceibal.github.io/emercado-api/cats_products/' + localStorage.catID + '.json';
+let data = [];
 
 //Variable creada para contener el div 'list-container'
 const listContainer = document.getElementsByClassName('list-container');
@@ -7,7 +8,7 @@ const listContainer = document.getElementsByClassName('list-container');
 //Funcion que hace el fetch de la url
 async function getJsonData(url) {
     const response = await fetch(url);
-    const data = await response.json();
+    data = await response.json();
     showData(data.products);
 };
 
@@ -15,6 +16,8 @@ getJsonData(URL)
 
 //Funcion que muestra los datos
 function showData(dataArray) {
+    listContainer[0].innerHTML = '';
+
     for(const item of dataArray) {
         listContainer[0].innerHTML += `
         <div  class="list-group-item list-group-item-action cursor-active">
@@ -37,36 +40,34 @@ function showData(dataArray) {
 
 //Funcion que ordena los datos, segun el tipo
 function sortData(dataArray, sortType) {
-    let newArray = [...dataArray];
+    let newArray = [...dataArray.products];
 
     if(sortType === 'desc') {
-        newArray.sort((a, b) => {
-            b.cost - a.cost;
-        });
+        newArray.sort((a, b) => b.cost - a.cost);
     } else if(sortType === 'asc') {
-        newArray.sort((a, b) => {
-            a.cost - b.cost;
-        });
+        newArray.sort((a, b) => 
+            a.cost - b.cost
+        );
     } else {
-        newArray.sort((a, b) => {
-            newArray((a, b) => b.soldCount - a.soldCount);
-        });
+        newArray.sort((a, b) => 
+            b.soldCount - a.soldCount
+        );
     }
 
-    showData(newArray);
+    return newArray;
 }
 
 
 //EventListeners
 
 document.getElementById('sort-price-desc').addEventListener('click', () => {
-    console.log('tocaste price desc');
+    showData(sortData(data, 'desc'));
 });
 
 document.getElementById('sort-price-asc').addEventListener('click', () => {
-    console.log('tocaste price asc');
+    showData(sortData(data, 'asc'));
 });
 
 document.getElementById('sort-rel').addEventListener('click', () => {
-    console.log('tocaste price rel');
+    showData(sortData(data, 'sort-rel'));
 });
